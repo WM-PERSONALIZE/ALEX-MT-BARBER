@@ -1,0 +1,1714 @@
+
+/* ========================================
+   ALEX MT BARBER
+   Estilo geral do site
+======================================== */
+
+:root {
+    --preto: #000000;
+    --amarelo: #e8bd43;
+    --amarelo-claro: #ffe69a;
+    --branco: #ffffff;
+    --verde-whatsapp: #25d366;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background: var(--preto);
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--preto);
+    color: var(--branco);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.site {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto minmax(0, 1.15fr) auto;
+    gap: clamp(12px, 2.5vh, 28px);
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: clamp(12px, 2.5vw, 32px);
+    overflow: hidden;
+    background: var(--preto);
+}
+
+/* ========================================
+   PONTOS AMARELOS NOS CANTOS
+======================================== */
+
+.site::before,
+.site::after {
+    position: absolute;
+    z-index: -1;
+    width: clamp(130px, 24vw, 310px);
+    height: clamp(130px, 24vw, 310px);
+    content: "";
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.site::before {
+    top: -65px;
+    left: -65px;
+    background-image:
+        radial-gradient(circle, #ffe69a 1px, transparent 1.8px),
+        radial-gradient(circle, #d8a72e 1.2px, transparent 2px);
+    background-size: 19px 19px, 31px 31px;
+    background-position: 0 0, 9px 12px;
+    mask-image: radial-gradient(
+        ellipse at top left,
+        #000 0%,
+        #000 12%,
+        transparent 72%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at top left,
+        #000 0%,
+        #000 12%,
+        transparent 72%
+    );
+}
+
+.site::after {
+    right: -65px;
+    bottom: -65px;
+    background-image:
+        radial-gradient(circle, #ffe69a 1px, transparent 1.8px),
+        radial-gradient(circle, #d8a72e 1.2px, transparent 2px);
+    background-size: 19px 19px, 31px 31px;
+    background-position: 0 0, 9px 12px;
+    mask-image: radial-gradient(
+        ellipse at bottom right,
+        #000 0%,
+        #000 12%,
+        transparent 72%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at bottom right,
+        #000 0%,
+        #000 12%,
+        transparent 72%
+    );
+}
+
+/* ========================================
+   LOGOTIPO
+======================================== */
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: 4px 0;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.logo {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(30vw, 240px);
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ========================================
+   BOTÕES DE CONTATO
+======================================== */
+
+.atalhos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 40px);
+    width: 100%;
+    min-width: 0;
+}
+
+.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 300px;
+    min-height: 54px;
+    padding: 12px 18px;
+    border: 1px solid var(--amarelo);
+    border-radius: 12px;
+    color: var(--branco);
+    font-size: clamp(14px, 1.3vw, 17px);
+    font-weight: 600;
+    text-align: center;
+    transition:
+        transform 180ms ease,
+        filter 180ms ease;
+}
+
+.botao svg {
+    display: block;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.botao:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+}
+
+.botao:focus-visible,
+.cartao-produto:focus-visible,
+.botao-mais:focus-visible {
+    outline: 2px solid var(--amarelo-claro);
+    outline-offset: 4px;
+}
+
+.botao-whatsapp {
+    background: #128c4a;
+}
+
+.botao-whatsapp svg {
+    fill: #ffffff;
+}
+
+.botao-instagram {
+    background: linear-gradient(
+        115deg,
+        #515bd4 0%,
+        #8134af 27%,
+        #dd2a7b 56%,
+        #feda77 100%
+    );
+}
+
+.botao-instagram svg {
+    color: #ffffff;
+}
+
+.botao-localizacao {
+    background: linear-gradient(
+        110deg,
+        #34a853 0%,
+        #34a853 31%,
+        #ea4335 52%,
+        #4285f4 76%,
+        #4285f4 100%
+    );
+}
+
+/* ========================================
+   VITRINE DE PRODUTOS
+======================================== */
+
+.secao-produtos {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+}
+
+.lista-produtos {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(12px, 2vw, 24px);
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 2px 10px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.lista-produtos::-webkit-scrollbar {
+    display: none;
+}
+
+.cartao-produto {
+    display: flex;
+    flex: 0 0 clamp(155px, 19vw, 245px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    padding: clamp(10px, 1.5vw, 20px);
+    overflow: hidden;
+    border: 1px solid var(--amarelo);
+    border-radius: 12px;
+    background: #080808;
+    scroll-snap-align: start;
+}
+
+.imagem-produto {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    object-fit: contain;
+}
+
+.nome-produto {
+    flex: 0 0 auto;
+    max-width: 100%;
+    color: var(--branco);
+    font-size: clamp(12px, 1.1vw, 15px);
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* ========================================
+   ÚLTIMO CARTÃO: WHATSAPP
+======================================== */
+
+.cartao-mais {
+    display: flex;
+    flex: 0 0 clamp(155px, 19vw, 245px);
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    padding: 8px;
+    scroll-snap-align: start;
+}
+
+.botao-mais {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border: 1px solid var(--amarelo);
+    border-radius: 12px;
+    background: #128c4a;
+    color: #ffffff;
+    text-align: center;
+    transition:
+        transform 180ms ease,
+        filter 180ms ease;
+}
+
+.botao-mais:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.botao-mais svg {
+    display: block;
+    width: clamp(38px, 5vw, 64px);
+    height: clamp(38px, 5vw, 64px);
+    fill: currentColor;
+}
+
+.texto-mais {
+    font-size: clamp(13px, 1.3vw, 17px);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    color: #8c8c8c;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* ========================================
+   TELAS DE COMPUTADOR
+======================================== */
+
+@media (min-width: 769px) {
+    .site {
+        grid-template-rows:
+            minmax(0, 1fr)
+            auto
+            minmax(0, 1.15fr)
+            auto;
+    }
+
+    .logo {
+        max-width: min(24vw, 240px);
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        flex-basis: clamp(155px, 19vw, 245px);
+    }
+}
+
+/* ========================================
+   CELULARES E TELAS ESTREITAS
+======================================== */
+
+@media (max-width: 768px) {
+    .site {
+        grid-template-rows:
+            minmax(0, 0.9fr)
+            auto
+            minmax(0, 1.5fr)
+            auto;
+        gap: clamp(10px, 2vh, 18px);
+        padding: 12px;
+    }
+
+    .logo {
+        max-width: min(45vw, 190px);
+        max-height: 100%;
+    }
+
+    .atalhos {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .botao {
+        flex: 0 0 auto;
+        width: min(100%, 340px);
+        max-width: none;
+        min-height: 42px;
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .botao svg {
+        flex-basis: 21px;
+        width: 21px;
+        height: 21px;
+    }
+
+    .lista-produtos {
+        gap: 12px;
+        padding: 4px 2px 8px;
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        flex-basis: 44%;
+        min-width: 0;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .cartao-mais {
+        padding: 5px;
+    }
+
+    .botao-mais {
+        gap: 12px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nome-produto {
+        font-size: 12px;
+    }
+
+    .texto-mais {
+        font-size: 12px;
+    }
+
+    .rodape {
+        font-size: 10px;
+    }
+}
+
+/* ========================================
+   CELULARES MUITO BAIXOS
+======================================== */
+
+@media (max-height: 600px) {
+    .site {
+        gap: 8px;
+        padding: 8px 12px;
+    }
+
+    .botao {
+        min-height: 36px;
+        padding: 6px 10px;
+    }
+
+    .botao svg {
+        width: 19px;
+        height: 19px;
+        flex-basis: 19px;
+    }
+
+    .atalhos {
+        gap: 6px;
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        padding: 7px;
+    }
+
+    .botao-mais {
+        gap: 8px;
+        padding: 8px;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE: MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+
+
+/* ========================================
+   AJUSTES - ALEX MT BARBER
+   Acrescentar ao final do style.css
+======================================== */
+
+/* VESTUÁRIO + VITRINE */
+
+.secao-produtos {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(8px, 1.5vh, 16px);
+}
+
+.titulo-produtos {
+    flex: 0 0 auto;
+    width: 100%;
+    color: var(--amarelo);
+    font-size: clamp(13px, 1.5vw, 19px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: left;
+}
+
+/* CARTÕES QUADRADOS */
+
+.lista-produtos {
+    flex: 1 1 0;
+    height: auto;
+    min-height: 0;
+    align-items: center;
+}
+
+.cartao-produto {
+    flex: 0 0 auto;
+    width: clamp(145px, 18vw, 230px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    justify-content: space-between;
+    align-self: center;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.cartao-produto:hover {
+    border-color: var(--amarelo-claro);
+    transform: translateY(-2px);
+}
+
+.imagem-produto {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 0;
+    min-height: 0;
+    object-fit: contain;
+}
+
+.nome-produto {
+    flex: 0 0 auto;
+    width: 100%;
+    padding-top: 4px;
+    font-size: clamp(11px, 1vw, 14px);
+    text-align: center;
+}
+
+/* CARTÃO FINAL DO WHATSAPP: MESMO FORMATO */
+
+.cartao-mais {
+    flex: 0 0 auto;
+    width: clamp(145px, 18vw, 230px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+}
+
+.botao-mais {
+    border-color: var(--amarelo);
+}
+
+.icone-mais svg {
+    display: block;
+    width: clamp(42px, 5vw, 64px);
+    height: clamp(42px, 5vw, 64px);
+}
+
+/* LOGO INFERIOR */
+
+.rodape {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.logo-inferior-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.logo-inferior {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(21vw, 168px);
+    max-height: 35px;
+    object-fit: contain;
+}
+
+/* BOTÕES COM ÍCONES DE APLICATIVO */
+
+.botao {
+    gap: 10px;
+    border-width: 1px;
+    border-color: var(--amarelo);
+}
+
+.icone-app {
+    display: block;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+}
+
+.botao-whatsapp {
+    background: #25D366;
+    color: #ffffff;
+}
+
+.botao-whatsapp:hover {
+    background: #20BD5A;
+}
+
+.botao-instagram {
+    background: #000000;
+    color: #ffffff;
+}
+
+.botao-instagram .icone-app {
+    border-radius: 10px;
+}
+
+.botao-localizacao {
+    background: #ffffff;
+    color: #202124;
+}
+
+.botao-localizacao:hover {
+    background: #f1f3f4;
+}
+
+/* FUNDO PONTILHADO RESPONSIVO */
+
+.site::before,
+.site::after {
+    width: min(35vw, 340px);
+    height: min(35vw, 340px);
+    opacity: 0.7;
+    background-size:
+        clamp(12px, 1.5vw, 20px) clamp(12px, 1.5vw, 20px),
+        clamp(20px, 2.5vw, 34px) clamp(20px, 2.5vw, 34px);
+}
+
+.site::before {
+    top: 0;
+    left: 0;
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 224, 130, 0.9) 1px,
+            transparent 1.7px
+        ),
+        radial-gradient(
+            circle,
+            rgba(224, 173, 48, 0.75) 1.2px,
+            transparent 2px
+        );
+    mask-image: radial-gradient(
+        ellipse at top left,
+        #000 0%,
+        rgba(0, 0, 0, 0.8) 15%,
+        transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at top left,
+        #000 0%,
+        rgba(0, 0, 0, 0.8) 15%,
+        transparent 75%
+    );
+}
+
+.site::after {
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 224, 130, 0.9) 1px,
+            transparent 1.7px
+        ),
+        radial-gradient(
+            circle,
+            rgba(224, 173, 48, 0.75) 1.2px,
+            transparent 2px
+        );
+    mask-image: radial-gradient(
+        ellipse at bottom right,
+        #000 0%,
+        rgba(0, 0, 0, 0.8) 15%,
+        transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at bottom right,
+        #000 0%,
+        rgba(0, 0, 0, 0.8) 15%,
+        transparent 75%
+    );
+}
+
+/* AJUSTES PARA CELULARES */
+
+@media (max-width: 768px) {
+    .secao-produtos {
+        gap: 8px;
+    }
+
+    .titulo-produtos {
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    .lista-produtos {
+        gap: 12px;
+        align-items: center;
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        width: min(44vw, 210px);
+        flex: 0 0 min(44vw, 210px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .cartao-produto {
+        padding: 8px;
+    }
+
+    .nome-produto {
+        font-size: 11px;
+    }
+
+    .icone-app {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-inferior {
+        max-width: min(31.5vw, 133px);
+        max-height: 28px;
+    }
+
+    .site::before,
+    .site::after {
+        width: min(48vw, 230px);
+        height: min(48vw, 230px);
+        opacity: 0.7;
+        background-size: 14px 14px, 23px 23px;
+    }
+}
+
+/* TELAS BAIXAS */
+
+@media (max-height: 600px) {
+    .logo-inferior {
+        max-height: 20px;
+    }
+
+    .rodape {
+        gap: 1px;
+    }
+
+    .titulo-produtos {
+        font-size: 12px;
+    }
+}
+
+
+/* ========================================
+   REFINAMENTO VISUAL - ALEX MT BARBER
+   Acrescentar ao final do style.css
+======================================== */
+
+/* 1. BOTÕES MAIS VISÍVEIS */
+
+.botao {
+    gap: clamp(12px, 1.5vw, 22px);
+    min-height: clamp(62px, 7.5vh, 82px);
+    padding: 12px clamp(12px, 2vw, 26px);
+    font-size: clamp(17px, 1.5vw, 21px);
+    font-weight: 700;
+    border-radius: 14px;
+}
+
+.icone-app {
+    flex: 0 0 clamp(38px, 3.5vw, 48px);
+    width: clamp(38px, 3.5vw, 48px);
+    height: clamp(38px, 3.5vw, 48px);
+}
+
+/* Instagram com gradiente colorido */
+
+.botao-instagram {
+    background: linear-gradient(
+        45deg,
+        #feda75 0%,
+        #fa7e1e 25%,
+        #d62976 50%,
+        #962fbf 75%,
+        #4f5bd5 100%
+    );
+    color: #ffffff;
+}
+
+.botao-instagram:hover {
+    filter: brightness(1.1);
+}
+
+/* WhatsApp verde oficial */
+
+.botao-whatsapp {
+    background: #25D366;
+    color: #ffffff;
+}
+
+/* Google Maps com fundo branco e ícone colorido */
+
+.botao-localizacao {
+    background: #ffffff;
+    color: #202124;
+}
+
+/* 2. TÍTULO MAIS PRÓXIMO DOS PRODUTOS */
+
+.secao-produtos {
+    gap: clamp(3px, 0.7vh, 8px);
+}
+
+.titulo-produtos {
+    align-self: flex-start;
+    width: 100%;
+    padding-left: 2px;
+    margin: 0;
+    font-size: clamp(16px, 1.8vw, 24px);
+    line-height: 1.15;
+    letter-spacing: clamp(2px, 0.35vw, 4px);
+}
+
+/* A altura da vitrine acompanha o espaço disponível */
+
+.lista-produtos {
+    flex: 1 1 0;
+    min-height: 0;
+    margin-top: 0;
+}
+
+/* 3. PRODUTOS COM IMAGEM PREENCHENDO O QUADRADO */
+
+.cartao-produto {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 0;
+    background: #ffffff;
+    border: 1px solid var(--amarelo);
+    border-radius: 12px;
+    aspect-ratio: 1 / 1;
+}
+
+.cartao-produto .imagem-produto {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+}
+
+/* Degradê discreto para facilitar a leitura do nome */
+
+.cartao-produto::after {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 34%;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 20%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+.cartao-produto .nome-produto {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 24px 8px 12px;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(13px, 1.2vw, 17px);
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* Efeito discreto ao passar o mouse */
+
+.cartao-produto:hover .imagem-produto {
+    transform: scale(1.035);
+}
+
+.cartao-produto .imagem-produto {
+    transition: transform 200ms ease;
+}
+
+/* 4. BOTÃO FINAL DO WHATSAPP */
+
+.botao-mais {
+    border: 1px solid var(--amarelo);
+    background: #25D366;
+    color: #ffffff;
+}
+
+.texto-mais {
+    font-size: clamp(15px, 1.4vw, 19px);
+    font-weight: 700;
+}
+
+/* 5. LOGO PRINCIPAL UM POUCO MAIOR */
+
+.logo {
+    max-width: min(28vw, 270px);
+}
+
+/* 6. LOGO INFERIOR MAIOR E UM POUCO MAIS ALTA */
+
+.logo-inferior {
+    max-width: min(27vw, 210px);
+    max-height: 42px;
+    transform: translateY(-4px);
+}
+
+.rodape {
+    gap: 2px;
+}
+
+/* 7. MAIS ESPAÇO ENTRE OS BOTÕES */
+
+.atalhos {
+    gap: clamp(16px, 3.5vw, 48px);
+}
+
+/* ========================================
+   AJUSTES PARA CELULAR
+======================================== */
+
+@media (max-width: 768px) {
+    .atalhos {
+        gap: clamp(10px, 1.7vh, 14px);
+    }
+
+    .botao {
+        width: min(100%, 360px);
+        min-height: clamp(48px, 6.5vh, 62px);
+        gap: 14px;
+        padding: 8px 18px;
+        font-size: clamp(16px, 4.3vw, 19px);
+        border-radius: 12px;
+    }
+
+    .icone-app {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .titulo-produtos {
+        font-size: clamp(15px, 4.2vw, 20px);
+        letter-spacing: 2px;
+    }
+
+    .secao-produtos {
+        gap: 4px;
+    }
+
+    .cartao-produto .nome-produto {
+        padding: 22px 7px 10px;
+        font-size: clamp(12px, 3.5vw, 15px);
+    }
+
+    .logo {
+        max-width: min(50vw, 215px);
+    }
+
+    .logo-inferior {
+        max-width: min(40vw, 175px);
+        max-height: 36px;
+        transform: translateY(-4px);
+    }
+
+    .botao-mais .texto-mais {
+        font-size: clamp(13px, 3.5vw, 16px);
+    }
+}
+
+/* TELAS COM POUCA ALTURA */
+
+@media (max-height: 600px) {
+    .botao {
+        min-height: 42px;
+        padding: 5px 12px;
+        font-size: 15px;
+    }
+
+    .icone-app {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-inferior {
+        max-height: 27px;
+    }
+
+    .titulo-produtos {
+        font-size: clamp(13px, 2.5vh, 17px);
+    }
+}
+
+
+
+/* ========================================
+   AJUSTES FINAIS - ALEX MT BARBER
+======================================== */
+
+/* BOTÕES: ÍCONES E TEXTOS MAIORES */
+
+.atalhos {
+    gap: clamp(18px, 3vw, 40px);
+}
+
+.botao {
+    min-height: clamp(70px, 9vh, 94px);
+    gap: clamp(12px, 1.5vw, 22px);
+    padding: 12px clamp(14px, 2vw, 28px);
+    font-size: clamp(19px, 1.8vw, 25px);
+    font-weight: 700;
+    border: 1px solid var(--amarelo);
+    border-radius: 14px;
+}
+
+.botao .icone-app {
+    flex: 0 0 clamp(44px, 4vw, 56px);
+    width: clamp(44px, 4vw, 56px);
+    height: clamp(44px, 4vw, 56px);
+}
+
+/* CORES DOS BOTÕES */
+
+.botao-whatsapp {
+    background: #25D366;
+    color: #ffffff;
+}
+
+.botao-instagram {
+    background: linear-gradient(
+        45deg,
+        #feda75 0%,
+        #fa7e1e 25%,
+        #d62976 50%,
+        #962fbf 75%,
+        #4f5bd5 100%
+    );
+    color: #ffffff;
+}
+
+.botao-localizacao {
+    background: #ffffff;
+    color: #202124;
+}
+
+.botao-localizacao:hover {
+    background: #f1f3f4;
+}
+
+/* VESTUÁRIO: JUNTO À VITRINE */
+
+.secao-produtos {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(3px, 0.6vh, 7px);
+    min-height: 0;
+}
+
+.titulo-produtos {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    margin: 0;
+    padding: 0 0 0 2px;
+    font-size: clamp(16px, 1.7vw, 24px);
+    line-height: 1.15;
+    letter-spacing: clamp(2px, 0.3vw, 4px);
+}
+
+.lista-produtos {
+    flex: 1 1 0;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+}
+
+/* CARTÕES: MESMO TAMANHO QUADRADO */
+
+.cartao-produto,
+.cartao-mais {
+    flex: 0 0 auto;
+    width: clamp(145px, 18vw, 230px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+}
+
+.cartao-produto {
+    position: relative;
+    isolation: isolate;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cartao-produto .imagem-produto {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cartao-produto .nome-produto {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 26px 8px 12px;
+    margin: 0;
+    font-size: clamp(13px, 1.2vw, 17px);
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* BOTÃO FINAL: EXATAMENTE O TAMANHO DO PRODUTO */
+
+.cartao-mais {
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+}
+
+.botao-mais {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 12px;
+    border: 1px solid var(--amarelo);
+    border-radius: 12px;
+    background: #25D366;
+    color: #ffffff;
+}
+
+.botao-mais .icone-mais svg {
+    width: clamp(44px, 4vw, 58px);
+    height: clamp(44px, 4vw, 58px);
+}
+
+.botao-mais .texto-mais {
+    font-size: clamp(15px, 1.4vw, 19px);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+/* LOGO INFERIOR: MAIS VISÍVEL E ACIMA DO COPYRIGHT */
+
+.rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.logo-inferior {
+    max-width: min(27vw, 210px);
+    max-height: 42px;
+    transform: translateY(-3px);
+}
+
+/* PONTOS DE FUNDO: UMA ÚNICA CAMADA */
+
+.site::before,
+.site::after {
+    width: min(35vw, 340px);
+    height: min(35vw, 340px);
+    opacity: 0.65;
+    background-image: radial-gradient(
+        circle,
+        rgba(232, 189, 67, 0.85) 1px,
+        transparent 1.6px
+    );
+    background-size: clamp(14px, 1.7vw, 22px)
+                     clamp(14px, 1.7vw, 22px);
+    background-position: 0 0;
+    background-repeat: repeat;
+}
+
+.site::before {
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    mask-image: radial-gradient(
+        ellipse at top left,
+        #000 0%,
+        rgba(0, 0, 0, 0.7) 20%,
+        transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at top left,
+        #000 0%,
+        rgba(0, 0, 0, 0.7) 20%,
+        transparent 75%
+    );
+}
+
+.site::after {
+    right: 0;
+    bottom: 0;
+    top: auto;
+    left: auto;
+    mask-image: radial-gradient(
+        ellipse at bottom right,
+        #000 0%,
+        rgba(0, 0, 0, 0.7) 20%,
+        transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at bottom right,
+        #000 0%,
+        rgba(0, 0, 0, 0.7) 20%,
+        transparent 75%
+    );
+}
+
+/* AJUSTES PARA CELULARES */
+
+@media (max-width: 768px) {
+    .atalhos {
+        gap: clamp(10px, 1.5vh, 15px);
+    }
+
+    .botao {
+        width: min(100%, 380px);
+        min-height: clamp(52px, 7vh, 68px);
+        gap: 14px;
+        padding: 8px 16px;
+        font-size: clamp(17px, 4.5vw, 21px);
+    }
+
+    .botao .icone-app {
+        flex-basis: clamp(36px, 9vw, 44px);
+        width: clamp(36px, 9vw, 44px);
+        height: clamp(36px, 9vw, 44px);
+    }
+
+    .secao-produtos {
+        gap: 4px;
+    }
+
+    .titulo-produtos {
+        font-size: clamp(15px, 4.2vw, 20px);
+        letter-spacing: 2px;
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        flex: 0 0 min(44vw, 210px);
+        width: min(44vw, 210px);
+        aspect-ratio: 1 / 1;
+    }
+
+    .cartao-produto .nome-produto {
+        padding: 24px 7px 10px;
+        font-size: clamp(12px, 3.5vw, 15px);
+    }
+
+    .botao-mais .icone-mais svg {
+        width: clamp(38px, 10vw, 48px);
+        height: clamp(38px, 10vw, 48px);
+    }
+
+    .botao-mais .texto-mais {
+        font-size: clamp(13px, 3.5vw, 16px);
+    }
+
+    .logo-inferior {
+        max-width: min(40vw, 175px);
+        max-height: 36px;
+        transform: translateY(-3px);
+    }
+
+    .site::before,
+    .site::after {
+        width: min(48vw, 230px);
+        height: min(48vw, 230px);
+        background-size: 15px 15px;
+        opacity: 0.65;
+    }
+}
+
+/* TELAS BAIXAS */
+
+@media (max-height: 600px) {
+    .botao {
+        min-height: 42px;
+        padding: 5px 12px;
+        font-size: 16px;
+    }
+
+    .botao .icone-app {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-inferior {
+        max-height: 26px;
+    }
+
+    .titulo-produtos {
+        font-size: clamp(13px, 2.5vh, 17px);
+    }
+}
+
+
+
+/* CORREÇÃO DEFINITIVA — TÍTULO VESTUÁRIO */
+
+.secao-produtos {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.titulo-produtos {
+    order: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 2px;
+    text-align: left;
+    font-size: clamp(16px, 1.8vw, 23px);
+    line-height: 1.2;
+}
+
+.lista-produtos {
+    order: 1;
+    margin: 0;
+}
+
+/* No celular, continua junto à vitrine */
+@media (max-width: 768px) {
+    .secao-produtos {
+        gap: 4px;
+    }
+
+    .titulo-produtos {
+        font-size: clamp(15px, 4.2vw, 20px);
+    }
+}
+
+
+
+
+
+/* CORREÇÃO DO ESPAÇAMENTO DO TÍTULO VESTUÁRIO */
+
+/* Cria espaço visual acima do título sem mover a seção inteira */
+.titulo-produtos {
+    position: relative;
+    top: -10px;
+    margin-bottom: 0 !important;
+}
+
+/* Compensa o deslocamento para preservar a posição da vitrine */
+.lista-produtos {
+    transform: translateY(-10px);
+}
+
+
+
+
+
+
+/* POSICIONAMENTO DO TÍTULO VESTUÁRIO */
+.secao-produtos {
+    margin-top: 0 !important;
+    gap: 0 !important;
+}
+
+.titulo-produtos {
+    position: relative;
+    top: 0 !important;
+    margin: 0 0 10px 0 !important;
+    padding: 0 0 0 2px !important;
+    line-height: 1.2;
+}
+
+.lista-produtos {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .titulo-produtos {
+        margin-bottom: 8px !important;
+    }
+}
+
+
+
+
+/* TÍTULO VESTUÁRIO MAIS PRÓXIMO DA VITRINE */
+.secao-produtos {
+    gap: 0 !important;
+}
+
+.titulo-produtos {
+    margin: 0 0 2px 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1 !important;
+}
+
+.lista-produtos {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+}
+
+
+
+/* SOBE A VITRINE PARA PERTO DO TÍTULO VESTUÁRIO */
+.lista-produtos {
+    position: relative;
+    top: -150px !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+}
+
+@media (max-width: 768px) {
+    .lista-produtos {
+        top: -15px !important;
+    }
+}
+
+
+
+
+/* AUMENTAR O TAMANHO DOS CARDS DE PRODUTOS */
+.cartao-produto,
+.cartao-mais {
+    width: clamp(180px, 22vw, 270px) !important;
+    flex: 0 0 clamp(180px, 22vw, 270px) !important;
+    aspect-ratio: 1 / 1;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 768px) {
+    .cartao-produto,
+    .cartao-mais {
+        width: min(52vw, 240px) !important;
+        flex: 0 0 min(52vw, 240px) !important;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
+
+/* AUMENTO EXTRA DOS CARDS */
+.cartao-produto,
+.cartao-mais {
+    width: clamp(195px, 24vw, 290px) !important;
+    flex: 0 0 clamp(195px, 24vw, 290px) !important;
+    aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 768px) {
+    .cartao-produto,
+    .cartao-mais {
+        width: min(56vw, 255px) !important;
+        flex: 0 0 min(56vw, 255px) !important;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
+/* Ajuste fino do título VESTUÁRIO */
+.titulo-produtos {
+    position: relative;
+    top: 5px;
+}
+
+
+/* AUMENTAR AS LOGOS E OS PRODUTOS */
+
+/* Logo principal */
+.logo {
+    width: min(46vw, 440px) !important;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Logo inferior */
+.logo-inferior {
+    max-width: min(32vw, 240px) !important;
+    max-height: 48px !important;
+}
+
+/* Cards dos produtos */
+.cartao-produto,
+.cartao-mais {
+    width: clamp(210px, 26vw, 310px) !important;
+    flex: 0 0 clamp(210px, 26vw, 310px) !important;
+    aspect-ratio: 1 / 1;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 768px) {
+    .logo {
+        width: min(70vw, 360px) !important;
+    }
+
+    .logo-inferior {
+        max-width: min(45vw, 195px) !important;
+        max-height: 42px !important;
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        width: min(60vw, 275px) !important;
+        flex: 0 0 min(60vw, 275px) !important;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
+
+
+
+/* AUMENTAR AS LOGOS E OS PRODUTOS */
+
+/* Logo principal */
+.logo {
+    width: min(46vw, 440px) !important;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Logo inferior */
+.logo-inferior {
+    max-width: min(32vw, 240px) !important;
+    max-height: 48px !important;
+}
+
+/* Cards dos produtos */
+.cartao-produto,
+.cartao-mais {
+    width: clamp(210px, 26vw, 310px) !important;
+    flex: 0 0 clamp(210px, 26vw, 310px) !important;
+    aspect-ratio: 1 / 1;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 768px) {
+    .logo {
+        width: min(70vw, 360px) !important;
+    }
+
+    .logo-inferior {
+        max-width: min(45vw, 195px) !important;
+        max-height: 42px !important;
+    }
+
+    .cartao-produto,
+    .cartao-mais {
+        width: min(60vw, 275px) !important;
+        flex: 0 0 min(60vw, 275px) !important;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
+
+
+/* LOGO INFERIOR 60% MAIOR */
+.logo-inferior {
+    max-width: min(51.2vw, 384px) !important;
+    max-height: 77px !important;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .logo-inferior {
+        max-width: min(72vw, 312px) !important;
+        max-height: 67px !important;
+    }
+}
+
+
+
+/* AJUSTE DO ESPAÇAMENTO ENTRE PRODUTOS E LOGO INFERIOR */
+.secao-produtos {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.rodape {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    gap: 2px !important;
+}
+
+.logo-inferior-link {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* CELULARES: respeitar a área da câmera e aproveitar a tela */
+@media (max-width: 768px) {
+    .site {
+        padding-top: max(12px, env(safe-area-inset-top)) !important;
+        padding-bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    }
+
+    .rodape {
+        transform: translateY(-8px);
+    }
+
+    .logo-inferior {
+        display: block;
+        height: auto;
+    }
+}
